@@ -24,7 +24,7 @@ if [ "$cnt" = "0" ]; then
     echo 'Asking for certificates'
     acme.sh --issue \
         ${names} \
-        --dns dns_cf
+        --dns dns_cf --debug
 fi
 
 echo 'Listing certs'
