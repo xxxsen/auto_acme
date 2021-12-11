@@ -13,14 +13,16 @@ if [ "${ACME_ACCOUNT}" = "" ]; then
 fi 	
 
 
-names=$(echo ${DOMAIN_LIST}| awk -F";" '{ for(i=1; i<=NF; i++){ printf "-d "$i" -d *."$i" " } }')
+names=$(echo ${DOMAIN_LIST}| awk -F";" '{ for(i=1; i<=NF; i++){ printf "-d "$i" " } }')
 echo "READ DOMAIN LIST:${names}"
 
 cnt=$(cat /acme.sh/account.conf | grep SAVED | wc -l)
 
+acme.sh --set-default-ca --server letsencrypt
+
 if [ "$cnt" = "0" ]; then
-    echo "regist account:${ACME_ACCOUNT}"
-    acme.sh  --register-account  -m ${ACME_ACCOUNT} --server zerossl    
+#    echo "regist account:${ACME_ACCOUNT}"
+#    acme.sh  --register-account  -m ${ACME_ACCOUNT} --server zerossl    
     echo 'Asking for certificates'
     acme.sh --issue \
         ${names} \

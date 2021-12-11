@@ -12,8 +12,7 @@ ENV CX_Secret=
 # use to regist an account 
 # see: https://github.com/acmesh-official/acme.sh/wiki/ZeroSSL.com-CA
 ENV ACME_ACCOUNT=
-# domain split with ';', exp: aaa.com;b.aaa.com;xx.aaa.com
-# notice: you dont need to add '*' to your domain
+# domain split with ';', exp: aaa.com;b.aaa.com;xx.aaa.com;*.aaa.com
 ENV DOMAIN_LIST=
 
 COPY ./entrypoint.sh ./
